@@ -1,7 +1,7 @@
 var React = require('react');
 var TONES = require('../constants/Tones');
 var Note = require('../util/Note');
-KeyStore = require('../stores/KeyStore');
+var KeyStore = require('../stores/KeyStore');
 
 var OrganKey = React.createClass({
   getInitialState: function () {
@@ -31,8 +31,13 @@ var OrganKey = React.createClass({
     KeyStore.remove(this._onChange());
   },
   render: function() {
+    if (this.state.pressed) {
+      this.style = 'bg-info'
+    } else {
+      this.style = 'bg-success'
+    }
     return(
-      <div>{ this.props.noteName }</div>
+      <div className={ this.style }>{ this.props.noteName }</div>
     )
   }
 })
