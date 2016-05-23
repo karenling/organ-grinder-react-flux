@@ -10,9 +10,9 @@ KeyStore.all = function () {
 };
 
 KeyStore.__onDispatch = function (payload) {
-  var idx = _keys.indexOf(payload.key);
   switch(payload.actionType) {
     case 'ADD_KEY':
+      var idx = _keys.indexOf(payload.key);
       if (idx === -1) {
         _keys.push(payload.key);
         KeyStore.__emitChange();
@@ -20,10 +20,15 @@ KeyStore.__onDispatch = function (payload) {
       }
       break;
     case 'REMOVE_KEY':
+      var idx = _keys.indexOf(payload.key);
       if (idx !== -1) {
         _keys.splice(idx);
         KeyStore.__emitChange();
       }
+      break;
+    case 'MULTIPLE_KEYS':
+      _keys = payload.keys.slice();
+      KeyStore.__emitChange();
       break;
   }
 };

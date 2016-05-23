@@ -12,6 +12,12 @@ var KeyActions = {
       actionType: 'REMOVE_KEY',
       key: key
     });
+  },
+  multipleKeys: function(keys) {
+    dispatcher.dispatch({
+      actionType: 'MULTIPLE_KEYS',
+      keys: keys
+    });
   }
 };
 
