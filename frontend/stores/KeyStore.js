@@ -1,6 +1,5 @@
 var Store = require ("flux/utils").Store;
 var dispatcher = require('../dispatcher/dispatcher');
-var OrganKey = require('../components/OrganKey');
 
 var _keys = [];
 var KeyStore = new Store(dispatcher);

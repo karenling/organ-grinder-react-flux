@@ -1,6 +1,8 @@
 var React = require('react');
 var Track = require('../util/Track');
 var KeyStore = require('../stores/KeyStore');
+var TrackActions = require('../actions/TrackActions');
+var TrackStore = require('../stores/TrackStore');
 
 var Recorder = React.createClass({
   getInitialState: function () {
@@ -20,6 +22,9 @@ var Recorder = React.createClass({
   playTrack: function() {
     this.state.Track.play();
   },
+  saveTrack: function() {
+    TrackActions.addTrack(this.state.Track);
+  },
   _onChange: function () {
     var keys = KeyStore.all();
     if (this.state.isRecording) {
@@ -36,6 +41,7 @@ var Recorder = React.createClass({
         <input type='submit' onClick={ this.stopRecording } value='Stop Recording'></input>
         <br/>
         <input type='submit' onClick={ this.playTrack } value='Play Recording'></input>
+        <input type='submit' onClick={ this.saveTrack } value='Save Recording'></input>
       </div>
     )
   }

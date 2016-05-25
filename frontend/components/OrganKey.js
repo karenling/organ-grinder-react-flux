@@ -28,7 +28,7 @@ var OrganKey = React.createClass({
     this.note = new Note(TONES[this.props.noteName]);
   },
   componentWillUnmount: function () {
-    KeyStore.remove(this._onChange());
+    KeyStore.remove(this._onChange);
   },
   render: function() {
     if (this.state.pressed) {
