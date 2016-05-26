@@ -6,6 +6,12 @@ var TrackActions = {
       actionType: 'ADD_TRACK',
       track: track
     });
+  },
+  deleteTrack: function(track) {
+    dispatcher.dispatch({
+      actionType: 'DELETE_TRACK',
+      track: track
+    });
   }
 };
 

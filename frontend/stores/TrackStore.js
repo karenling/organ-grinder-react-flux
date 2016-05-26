@@ -13,6 +13,14 @@ TrackStore.__onDispatch = function(payload) {
     case 'ADD_TRACK':
       _tracks.push(payload.track);
       TrackStore.__emitChange();
+      break;
+    case 'DELETE_TRACK':
+      var trackIdx = _tracks.indexOf(payload.track);
+      if (trackIdx !== -1) {
+        _tracks.splice(trackIdx, 1);
+      }
+      TrackStore.__emitChange();
+      break;
   }
 };
 

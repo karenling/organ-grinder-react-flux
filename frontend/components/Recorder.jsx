@@ -3,12 +3,14 @@ var Track = require('../util/Track');
 var KeyStore = require('../stores/KeyStore');
 var TrackActions = require('../actions/TrackActions');
 var TrackStore = require('../stores/TrackStore');
+var Jukebox = require('./Jukebox');
 
 var Recorder = React.createClass({
   getInitialState: function () {
     return {
       isRecording: false,
-      Track: new Track()
+      Track: new Track(),
+      trackName: ''
     }
   },
   startRecording: function() {
@@ -23,7 +25,12 @@ var Recorder = React.createClass({
     this.state.Track.play();
   },
   saveTrack: function() {
+    this.state.Track.attributes.name = this.state.trackName;
     TrackActions.addTrack(this.state.Track);
+    this.setState( this.getInitialState() );
+  },
+  updateTrackName: function(e) {
+    this.setState({ trackName: e.target.value })
   },
   _onChange: function () {
     var keys = KeyStore.all();
@@ -41,7 +48,10 @@ var Recorder = React.createClass({
         <input type='submit' onClick={ this.stopRecording } value='Stop Recording'></input>
         <br/>
         <input type='submit' onClick={ this.playTrack } value='Play Recording'></input>
+        <br/>
+        <input type='text' onChange={ this.updateTrackName } value={ this.state.trackName }></input>
         <input type='submit' onClick={ this.saveTrack } value='Save Recording'></input>
+        <Jukebox></Jukebox>
       </div>
     )
   }
