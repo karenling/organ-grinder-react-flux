@@ -2,6 +2,7 @@ var React = require('react');
 var TrackPlayer = require('./TrackPlayer');
 var TrackStore = require('../stores/TrackStore');
 var TrackActions = require('../actions/TrackActions');
+var TrackApiUtil = require('../util/TrackApiUtil');
 
 var Jukebox = React.createClass({
   getInitialState: function() {
@@ -16,6 +17,7 @@ var Jukebox = React.createClass({
     TrackActions.deleteTrack(track);
   },
   componentDidMount: function() {
+    TrackApiUtil.fetchTracks();
     TrackStore.addListener(this._onChange)
   },
   render: function() {

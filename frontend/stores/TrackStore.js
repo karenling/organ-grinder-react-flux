@@ -21,6 +21,9 @@ TrackStore.__onDispatch = function(payload) {
       }
       TrackStore.__emitChange();
       break;
+    case 'RESET_TRACKS':
+      _tracks = payload.tracks.slice();
+      TrackStore.__emitChange();
   }
 };
 

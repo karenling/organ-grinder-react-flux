@@ -1,9 +1,8 @@
 var React = require('react');
 var Track = require('../util/Track');
 var KeyStore = require('../stores/KeyStore');
-var TrackActions = require('../actions/TrackActions');
-var TrackStore = require('../stores/TrackStore');
 var Jukebox = require('./Jukebox');
+var TrackApiUtil = require('../util/TrackApiUtil');
 
 var Recorder = React.createClass({
   getInitialState: function () {
@@ -26,7 +25,7 @@ var Recorder = React.createClass({
   },
   saveTrack: function() {
     this.state.Track.attributes.name = this.state.trackName;
-    TrackActions.addTrack(this.state.Track);
+    TrackApiUtil.createTrack(this.state.Track);
     this.setState( this.getInitialState() );
   },
   updateTrackName: function(e) {

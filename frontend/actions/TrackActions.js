@@ -12,6 +12,12 @@ var TrackActions = {
       actionType: 'DELETE_TRACK',
       track: track
     });
+  },
+  resetTracks: function(tracks) {
+    dispatcher.dispatch({
+      actionType: 'RESET_TRACKS',
+      tracks: tracks
+    })
   }
 };
 
