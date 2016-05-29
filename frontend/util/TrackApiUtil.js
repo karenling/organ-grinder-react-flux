@@ -27,6 +27,16 @@ var TrackApiUtil = {
         TrackActions.addTrack(newTrack);
       }
     });
+  },
+  deleteTrack: function(track) {
+    $.ajax({
+      type: 'DELETE',
+      dataType: 'JSON',
+      url: '/api/tracks/' + track.attributes.id,
+      success: function() {
+        TrackActions.deleteTrack(track);
+      }
+    });
   }
 };
 

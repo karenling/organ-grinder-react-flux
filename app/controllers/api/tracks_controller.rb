@@ -14,7 +14,7 @@ class Api::TracksController < ApplicationController
 
   def destroy
     track = Track.find_by_id(params[:id])
-    if track
+    if track.destroy
       render json: track, status: :ok
     else
       render json: track, status: :unprocessable_entity

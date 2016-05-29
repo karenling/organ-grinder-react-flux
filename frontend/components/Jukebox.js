@@ -14,7 +14,7 @@ var Jukebox = React.createClass({
     this.setState({ tracks: TrackStore.all() })
   },
   deleteTrack: function(track) {
-    TrackActions.deleteTrack(track);
+    TrackApiUtil.deleteTrack(track);
   },
   componentDidMount: function() {
     TrackApiUtil.fetchTracks();
